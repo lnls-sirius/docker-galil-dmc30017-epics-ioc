@@ -1,0 +1,19 @@
+[Unit]
+Description=Galil DMC 30017 container instance %I
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=2
+EnvironmentFile=/etc/sysconfig/docker-galil-dmc30017-epics-ioc
+EnvironmentFile=/etc/sysconfig/docker-galil-dmc30017-epics-ioc-mapping
+Environment=IMAGE_VERSION=debian-9
+# Used inside runGalilDmc30017 script
+Environment=DMC30017_INSTANCE=%i
+ExecStartPre=-/usr/bin/docker pull lnlsdig/galil-dmc30017-epics-ioc:${IMAGE_VERSION}
+ExecStart=/usr/local/bin/runGalilDmc30017.sh
+ExecStop=/usr/local/bin/stopGalilDmc30017.sh
+
+[Install]
+WantedBy=multi-user.target
