@@ -2,10 +2,9 @@ FROM lnlsdig/galil-epics-module:debian-9.2
 
 ENV IOC_REPO galil-dmc30017-epics-ioc
 ENV BOOT_DIR iocGalilDmc30017
-ENV COMMIT v0.2.0
+ENV COMMIT v0.3.0
 
-RUN echo "nameserver 10.0.0.71" >> /etc/resolv.conf && \
-    git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
+RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
     git checkout ${COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
