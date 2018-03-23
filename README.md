@@ -37,6 +37,7 @@ can specify (after `lnlsdig/galil-dmc30017-epics-ioc`) are:
 - `-g EGU`: the engineering units used
 - `-w DEFAULT_HOMETYPE`:  the home switch type, normal open (NO) or normal closed (NC)
 - `-z DEFAULT_LIMITTYPE`: the limit switch type, normal open (NO) or normal closed (NC)
+- `-G AMP_GAIN`: the default amplifier gain (0, 1, 2, 3). Each option translates to the following max current: option *0* = 0.75 A for steppers and 0.4 for servos; option *1* = 1.5 A for steppers and 0.8 A for servos; option *2* = 3 A for steppers and 1.6 A for servos; option *3* = 6 A for steppers (servo configuration does not accept this option).
 
 ## Creating a Persistent Container
 
