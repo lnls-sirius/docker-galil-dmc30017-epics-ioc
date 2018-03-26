@@ -39,6 +39,21 @@ can specify (after `lnlsdig/galil-dmc30017-epics-ioc`) are:
 - `-z DEFAULT_LIMITTYPE`: the limit switch type, normal open (NO) or normal closed (NC)
 - `-G AMP_GAIN`: the default amplifier gain (0, 1, 2, 3). Each option translates to the following max current: option *0* = 0.75 A for steppers and 0.4 for servos; option *1* = 1.5 A for steppers and 0.8 A for servos; option *2* = 3 A for steppers and 1.6 A for servos; option *3* = 6 A for steppers (servo configuration does not accept this option).
 
+Obs:
+
+...DMC30017 configuration options only take effect when there is no
+autosave file to use in startup. The amplifier gain option is the
+only exception, taking precedence over the autosave value when defined.
+
+...The motor type option only takes effect if the DMC30017 amplifier
+is powered off before starting the IOC. This restriction does not
+prevent the IOC from setting the motor type while also powering
+the amplifier on at startup.
+
+In some situations it is desired to run the process using procServ,
+which enables the IOC to be controlled by the system. In order to
+run the IOC with procServ, instead of the previous command, run:
+
 ## Creating a Persistent Container
 
 If you want to create a persistent container to run the IOC, you can run a
