@@ -2,7 +2,7 @@ FROM lnlsdig/galil-epics-module:debian-9.2
 
 ENV IOC_REPO galil-dmc30017-epics-ioc
 ENV BOOT_DIR iocGalilDmc30017
-ENV COMMIT v0.6.0
+ENV COMMIT v0.6.1
 
 RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
