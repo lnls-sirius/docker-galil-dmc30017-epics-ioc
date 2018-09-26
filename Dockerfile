@@ -1,4 +1,4 @@
-FROM lnlsdig/galil-epics-module:V3-6-base-3.15-debian-9
+FROM lnlsdig/galil-epics-module:V3-6-LNLS1-base-3.15-debian-9
 
 ENV IOC_REPO galil-dmc30017-epics-ioc
 ENV BOOT_DIR iocGalilDmc30017
