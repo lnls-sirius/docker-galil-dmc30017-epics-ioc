@@ -1,10 +1,13 @@
-FROM lnlsdig/galil-epics-module:V3-6-LNLS1-base-3.15-debian-9
+ARG DEBIAN_VERSION
+FROM lnlsdig/galil-epics-module:V3-6-LNLS1-base-3.15-${DEBIAN_VERSION}
 
-ENV IOC_REPO galil-dmc30017-epics-ioc
+ARG IOC_GROUP
+ARG IOC_REPO
+ARG COMMIT
+
 ENV BOOT_DIR iocGalilDmc30017
-ENV COMMIT v1.2.5
 
-RUN git clone https://github.com/lnls-dig/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
+RUN git clone https://github.com/${IOC_GROUP}/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
     git checkout ${COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
