@@ -3,7 +3,7 @@ ARG DEBIAN_VERSION
 FROM lnlsdig/galil-epics-module:V3-6-LNLS1-${BASE_VERSION}-${DEBIAN_VERSION}
 
 ARG BASE_VERSION
-ARG COMMIT
+ARG IOC_COMMIT
 ARG DEBIAN_VERSION
 ARG IOC_GROUP
 ARG IOC_REPO
@@ -12,7 +12,7 @@ ENV BOOT_DIR iocGalilDmc30017
 
 RUN git clone https://github.com/${IOC_GROUP}/${IOC_REPO}.git /opt/epics/${IOC_REPO} && \
     cd /opt/epics/${IOC_REPO} && \
-    git checkout ${COMMIT} && \
+    git checkout ${IOC_COMMIT} && \
     echo 'EPICS_BASE=/opt/epics/base' > configure/RELEASE.local && \
     echo 'SUPPORT=/opt/epics/synApps-lnls-R0-0-2/support' >> configure/RELEASE.local && \
     echo 'AUTOSAVE=$(SUPPORT)/autosave-R5-9' >> configure/RELEASE.local && \
